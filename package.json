@@ -10,10 +10,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.8.0",
   "dependencies": {
     "@genkit-ai/googleai": "^1.6.0",
     "dotenv": "^16.5.0",
     "genkit": "^1.6.0"
+  },
+  "devDependencies": {
+    "genkit-cli": "^1.6.1"
   }
 }
