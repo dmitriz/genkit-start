@@ -3,15 +3,15 @@ dotenv.config();
 import { genkit } from 'genkit';
 import { gemini20Flash, googleAI } from '@genkit-ai/googleai';
 
-function createAI({ model = gemini20Flash, plugins = [googleAI()] }: { 
+function create_llm({ model = gemini20Flash, plugins = [googleAI()] }: { 
   model?: any;
   plugins?: any[]; 
 } = {}): any {
   return genkit({ plugins, model });
 }
 
-async function generateText(aiInstance: any, prompt: string): Promise<string> {
-  const { text } = await aiInstance.generate(prompt);
+async function generate_text(ai_instance: any, prompt: string): Promise<string> {
+  const { text } = await ai_instance.generate(prompt);
   return text;
 }
 
@@ -24,8 +24,8 @@ async function main({
   prompt: string;
   plugins: any[] 
 }) {
-  const aiInstance = createAI({ model, plugins });
-  const text = await generateText(aiInstance, prompt);
+  const llm = create_llm({ model, plugins });
+  const text = await generate_text(llm, prompt);
   return text;
 }
 
