@@ -2,11 +2,12 @@
   "name": "genkit",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "node index.js",
-    "watch": "node --watch index.js",
+    "start": "npx tsx index.ts",
+    "watch": "npx tsx --watch index.ts",
     "dev": "npx genkit start -o -- npm run watch",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,6 +19,9 @@
     "genkit": "^1.6.0"
   },
   "devDependencies": {
-    "genkit-cli": "^1.6.1"
+    "@types/node": "^22.14.1",
+    "genkit-cli": "^1.6.1",
+    "typescript": "^5.8.3",
+    "tsx": "^4.7.0"
   }
 }
