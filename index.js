@@ -22,5 +22,5 @@ async function main({ plugins, model, prompt }) {
 main({
   plugins: [googleAI()],
   model: gemini20Flash,
-  prompt: 'u ok' // for short answer
+  prompt: 'Hello, Gemini!' // for short answer
 });
