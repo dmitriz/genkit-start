@@ -49,9 +49,7 @@ async function generateText({
   const llm = genkit({ plugins: effectivePlugins, model });
   const { text: rawText } = await llm.generate(prompt);
 
-  // Format the response to match the expected output
-  const text = `Generated text for model: ${model}`;
-  return { text };
+  return { text: rawText };
 }
 
 export { generateText };
