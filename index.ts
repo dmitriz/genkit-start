@@ -2,18 +2,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { generateText } from './client';
 
-async function main(model: string, prompt: string): Promise<string> {
-  // Call the generateText function with the provided model and prompt
-  return await generateText({ model, prompt });
+async function main(): Promise<void> {
+  // Hardcoded model and prompt using Google model
+  const model = 'googleai/gemini-2.0-flash';
+  const prompt = 'Write a story about a brave knight.';
+
+  try {
+    const { text } = await generateText({ model, prompt });
+    console.log(text);
+  } catch (error) {
+    console.error('Error generating text:', error);
+  }
 }
 
-// Example usage
-const model = process.argv[2]; // Get model from command-line arguments
-const prompt = process.argv[3]; // Get prompt from command-line arguments
-
-if (!model || !prompt) {
-  console.error('Usage: npm start <model> <prompt>');
-  process.exit(1);
-}
-
-main(model, prompt).then(console.log).catch(console.error);
+main();
