@@ -33,5 +33,5 @@ async function main({
 main({
   plugins: [googleAI()],
   model: gemini20Flash,
-  prompt: 'Hello!'
+  prompt: 'Hello'
 }).then(console.log);
