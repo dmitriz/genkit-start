@@ -1,7 +1,7 @@
 // import the Genkit and Google AI plugin libraries
-const { gemini20Flash, googleAI } = require('@genkit-ai/googleai');
-const { genkit } = require('genkit');
 require('dotenv').config();
+const { genkit } = require('genkit');
+const { gemini20Flash, googleAI } = require('@genkit-ai/googleai');
 
 function createAI({ plugins = [googleAI()], model = gemini20Flash } = {}) {
   return genkit({ plugins, model });
