@@ -1,0 +1,11 @@
+# Node
+node_modules/
+.env
+*.log
+dist/
+# pnpm
+.pnpm-debug.log
+.pnpm-store/
+# OS
+.DS_Store
+Thumbs.db
