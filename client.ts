@@ -22,11 +22,15 @@ const isGoogleModel = (model: string): boolean => {
 };
 
 /**
- * Generates text using the specified model
- * @param options Configuration options
- * @param options.model The model to use (defaults to 'googleai/gemini-2.0-flash')
- * @param options.prompt The prompt to send to the model
- * @returns The generated text
+ * Generates text from a prompt using a specified AI model.
+ *
+ * If the model is not recognized as a supported Google AI model or does not start with 'openai/', the function falls back to the default Google AI model. Only 'openai/gpt-4' is supported for OpenAI models.
+ *
+ * @param options.model - Optional model identifier. Defaults to the primary Google AI model if not provided or unrecognized.
+ * @param options.prompt - The prompt to generate text from.
+ * @returns An object containing the generated text.
+ *
+ * @throws {Error} If an OpenAI model other than 'openai/gpt-4' is specified.
  */
 async function generateText({
   model = DEFAULT_MODEL, // Use the default model if none is provided
