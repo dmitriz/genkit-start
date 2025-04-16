@@ -8,7 +8,7 @@
     "watch": "npx tsx --watch index.ts",
     "dev": "npx genkit start -o -- npm run watch",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx ava"
   },
   "keywords": [],
   "author": "",
@@ -20,8 +20,17 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
+    "ava": "^6.1.1",
     "genkit-cli": "^1.6.1",
     "typescript": "^5.8.3",
     "tsx": "^4.7.0"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "tsx/cjs"
+    ]
   }
 }

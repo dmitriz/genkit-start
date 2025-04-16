@@ -1,37 +1,19 @@
 import dotenv from 'dotenv';
 dotenv.config();
-import { genkit } from 'genkit';
-import { gemini20Flash, googleAI } from '@genkit-ai/googleai';
+import { generateText } from './client';
 
-function create_llm({ model = gemini20Flash, plugins = [googleAI()] }: { 
-  model?: any;
-  plugins?: any[]; 
-} = {}): any {
-  return genkit({ plugins, model });
+async function main(model: string, prompt: string): Promise<string> {
+  // Call the generateText function with the provided model and prompt
+  return await generateText({ model, prompt });
 }
 
-async function generate_text(ai_instance: any, prompt: string): Promise<string> {
-  const { text } = await ai_instance.generate(prompt);
-  return text;
+// Example usage
+const model = process.argv[2]; // Get model from command-line arguments
+const prompt = process.argv[3]; // Get prompt from command-line arguments
+
+if (!model || !prompt) {
+  console.error('Usage: npm start <model> <prompt>');
+  process.exit(1);
 }
 
-async function main({ 
-  model, 
-  prompt,
-  plugins 
-}: { 
-  model: any; 
-  prompt: string;
-  plugins: any[] 
-}) {
-  const llm = create_llm({ model, plugins });
-  const text = await generate_text(llm, prompt);
-  return text;
-}
-
-// Example usage with defaults
-main({
-  model: gemini20Flash,
-  prompt: 'Hello',
-  plugins: [googleAI()]
-}).then(console.log);
+main(model, prompt).then(console.log).catch(console.error);
