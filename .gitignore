@@ -9,3 +9,5 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+# Genkit
+.genkit/
